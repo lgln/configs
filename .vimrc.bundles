@@ -37,6 +37,8 @@
     map <Leader><Leader>j <Plug>(easymotion-j)
     map <Leader><Leader>k <Plug>(easymotion-k)
     map <Leader><leader>l <Plug>(easymotion-lineforward)
+    map  <leader>/ <Plug>(easymotion-sn)
+    omap <leader>/ <Plug>(easymotion-tn)
     " }
 
     " ctrlp {
@@ -55,6 +57,8 @@
     let g:ctrlp_match_window_reversed=0
     let g:ctrlp_mruf_max=500
     let g:ctrlp_follow_symlinks=1
+    "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
     " }
 
     " ctrlp-funky {
@@ -65,6 +69,30 @@
     let g:ctrlp_funky_syntax_highlight = 1
     let g:ctrlp_extensions = ['funky']
     " }
+    
+    " ctrlspace {
+    Bundle 'szw/vim-ctrlspace'
+    set hidden
+    let g:airline_exclude_preview=1
+    let g:ctrlspace_default_mapping_key="<leader><space>"
+    " }
+    
+    " riv {
+    Bundle 'Rykka/riv.vim'
+    " }
+    
+    " ag.vim {
+    Bundle 'rking/ag.vim'
+    nnoremap <leader>a :Ag <C-R><C-W>
+    " }
+    
+    " tagbar {
+    Bundle 'majutsushi/tagbar'
+    let g:tagbar_autofocus = 1
+    nnoremap <silent> <leader>tt :TagbarToggle<CR>
+    " }
+
+
 
     filetype plugin indent on    " required
 " }
