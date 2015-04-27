@@ -7,7 +7,7 @@
     " let Vundle manage Vundle, required
     Bundle 'gmarik/Vundle.vim'
 
-    " Óï·¨¼ì²é {
+    " syntax {
     Bundle 'scrooloose/syntastic'
     " }
 
