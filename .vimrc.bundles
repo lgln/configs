@@ -92,7 +92,16 @@
     nnoremap <silent> <leader>tt :TagbarToggle<CR>
     " }
 
+    " nerdtree {
+    Bundle 'scrooloose/nerdtree'
+    nnoremap <leader>e :NERDTree<CR>
+    let g:NERDTreeMapOpenSplit = 's'
+    let g:NERDTreeMapOpenVSplit = 'v'
+    " }
 
+    " multiple-cursors {
+    Bundle 'http://github.com/terryma/vim-multiple-cursors.git'
+    " }
 
     filetype plugin indent on    " required
 " }
