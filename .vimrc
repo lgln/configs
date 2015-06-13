@@ -116,8 +116,16 @@
 " }
 
 " map {
-    let mapleader = ","
-    let g:mapleader = ","
+    let mapleader = "\<space>"
+    let g:mapleader = "\<space>"
+    
+    vmap <leader>y "+y
+    vmap <leader>d "+d
+    nmap <leader>p "+p
+    nmap <leader>P "+P
+    vmap <leader>p "+p
+    vmap <leader>P "+P
+
 
     map j gj
     map k gk
