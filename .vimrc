@@ -27,6 +27,14 @@
 
 " }
 
+" Encoding {
+    set encoding=utf-8    
+    set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+    set termencoding=utf-8
+    set ffs=unix,dos,mac
+" }
+
+
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
@@ -36,14 +44,18 @@
 " General {
 
     set background=dark         " Assume a dark background
-    " if !has('gui')
-        "set term=$TERM          " Make arrow and other keys work
-    " endif
+    if !has('gui')
+        set term=$TERM          " Make arrow and other keys work
+    endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
+    set encoding=utf-8          
+    set termencoding=utf-8
+    set fileencoding=utf-8
+    set fileencodings=ucs-bom,utf-8,chinese,cp936
 
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
@@ -57,12 +69,14 @@
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
     "set autowrite                       " Automatically write a file when leaving a modified buffer
+    set autoread
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
     set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
+
 " }
 
 " Vim UI {
@@ -116,16 +130,10 @@
 " }
 
 " map {
+    "let mapleader = ","
+    "let g:mapleader = ","
     let mapleader = "\<space>"
     let g:mapleader = "\<space>"
-    
-    vmap <leader>y "+y
-    vmap <leader>d "+d
-    nmap <leader>p "+p
-    nmap <leader>P "+P
-    vmap <leader>p "+p
-    vmap <leader>P "+P
-
 
     map j gj
     map k gk
@@ -134,6 +142,15 @@
     map <C-K> <C-W>k<C-W>_
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
+    
+    vmap <leader>y "+y
+    vmap <leader>d "+d
+    nmap <leader>p "+p
+    nmap <leader>P "+P
+    vmap <leader>p "+p
+    vmap <leader>P "+P
+
+    nnoremap <leader>w :w<CR>
 
     nmap <silent> <leader>/ :nohlsearch<CR>
 
@@ -154,16 +171,6 @@
     " edit vimrc/zshrc and load vimrc bindings
     nnoremap <leader>ec :vsp $MYVIMRC<CR>
     nnoremap <leader>sc :source $MYVIMRC<CR>
-
-    " Smart mappings on the command line
-    cno $h e ~/
-    cno $d e ~/Desktop/
-    cno $j e ./
-    cno $c e <C-\>eCurrentFileDir("e")<cr>
-
-    " $q is super useful when browsing on the command line
-    " it deletes everything until the last slash 
-    cno $q <C-\>eDeleteTillSlash()<cr>
 
     " Bash like keys for the command line
     cnoremap <C-A>		<Home>
@@ -208,6 +215,3 @@
     call InitializeDirectories()
     " }
 " }
-
-
-
