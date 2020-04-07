@@ -157,6 +157,7 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 " Use <c-.> to trigger completion.
 inoremap <silent><expr> <c-.> coc#refresh()
@@ -166,14 +167,6 @@ inoremap <silent><expr> <c-.> coc#refresh()
 " Or use `complete_info` if your vim support it, like:
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" ycm
-" not use clangd
-" let g:ycm_use_clangd = 0
-" let g:ycm_clangd_binary_path = "~/.config\nvim\plugged\YouCompleteMe\third_party\ycmd\third_party\clangd\output\bin"
-" let g:ycm_goto_buffer_command = 'horizontal-split'
-" nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" " let g:ycm_global_ycm_extra_conf = "~/.config/nvim/.ycm_extra_conf.py"
-" let g:ycm_confirm_extra_conf = 0
 
 " Golang
 let g:go_play_open_browser = 0
@@ -291,7 +284,7 @@ nnoremap ; :
 " Ctrl-j is a little awkward unfortunately:
 " https://github.com/neovim/neovim/issues/5916
 " So we also map Ctrl+k
-inoremap <C-j> <Esc>
+" inoremap <C-j> <Esc>
 
 nnoremap <C-k> <Esc>
 inoremap <C-k> <Esc>
@@ -378,10 +371,10 @@ nnoremap k gk
 " 'Smart' nevigation
 nmap <silent> E <Plug>(coc-diagnostic-prev)
 nmap <silent> W <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <M-j> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <M-,> <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -441,7 +434,6 @@ endif
 autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
 
 " Follow Rust code style rules
-au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
 au Filetype rust set colorcolumn=100
 
 " Help filetype detection
@@ -452,8 +444,6 @@ autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
 
-" Script plugins
-autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 
 " =============================================================================
 " # Footer
