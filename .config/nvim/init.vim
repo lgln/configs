@@ -75,7 +75,12 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
 endif
 " Colors
 set background=dark
-colorscheme base16-default-dark
+if !WINDOWS()
+    let base16colorspace=256
+endif
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
 hi Normal ctermbg=NONE
 " Get syntax
 syntax on
