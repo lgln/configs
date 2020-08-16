@@ -25,6 +25,8 @@ depend tools
     cargo install ripgrep
     # ag: https://github.com/ggreer/the_silver_searcher
     apt-get install silversearcher-ag
+    # proximity-sort: https://github.com/jonhoo/proximity-sort 
+    cargo install proximity-sort
 
 install plugs within vim
 

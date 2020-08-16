@@ -355,11 +355,14 @@ map H ^
 map L $
 
 " Neat X clipboard integration
-" ,p will paste clipboard into buffer
-" ,c will copy entire buffer into clipboard
+" <leader>p will paste clipboard into buffer
+" <leader>c will copy entire buffer into clipboard
 noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
 
+" FZF
+" <leader>h for History
+noremap <leader>h :History
 " <leader>s for Rg search
 noremap <leader>s :Rg
 let g:fzf_layout = { 'down': '~20%' }
@@ -373,7 +376,8 @@ command! -bang -nargs=* Rg
 function! s:list_cmd()
   if !WINDOWS()
     let base = fnamemodify(expand('%'), ':h:.:S')
-    return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
+    return base == '.' ? 'fd --type file --follow' : 
+        \ printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
   else
     return 'fd --type file --follow'
   endif
