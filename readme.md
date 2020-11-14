@@ -32,3 +32,4 @@ install plugs within vim
 
     :PlugInstall
     :CocInstall coc-rls
+    :CocInstall coc-python
