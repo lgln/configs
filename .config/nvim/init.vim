@@ -12,7 +12,7 @@ let mapleader = "\<Space>"
 " # PLUGINS
 " =============================================================================
 set nocompatible
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin()
 
 " Load plugins
 " VIM enhancements
