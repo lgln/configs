@@ -12,7 +12,7 @@ let mapleader = "\<Space>"
 " # PLUGINS
 " =============================================================================
 set nocompatible
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin()
 
 " Load plugins
 " VIM enhancements
@@ -27,7 +27,7 @@ Plug 'andymass/vim-matchup'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Semantic language support
